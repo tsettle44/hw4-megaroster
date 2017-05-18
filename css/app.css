@@ -32,3 +32,9 @@ span.student-name {
   color: #eee;
   cursor: not-allowed;
 }
+
+.student:nth-last-child(2) button.move-down {
+  background-color: #ddd;
+  color: #eee;
+  cursor: not-allowed;
+}
