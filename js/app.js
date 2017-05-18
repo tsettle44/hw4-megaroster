@@ -82,6 +82,41 @@ class Megaroster {
     this.save()
   }
 
+  edit(student, ev) {
+    const btn = ev.target
+    const i = btn.firstElementChild
+    const li = btn.closest('.student')
+    const span = li.firstElementChild
+    const attr = span.attributes
+    const ni = attr[1].value
+    
+
+    if(ni == 'false') {
+      span.setAttribute('contenteditable', 'true')
+    } else {
+      span.setAttribute('contenteditable', 'false')
+    }
+    btn.success = !btn.success
+    
+    if(btn.success){
+      btn.classList.add('success')
+      i.classList.add('fa-check-circle')
+    } else {
+      btn.classList.remove('success')
+      i.classList.remove('fa-check-circle')
+    }
+
+    i.faCheckCircle = !i.faCheckCircle
+
+    if(i.faCheckCircle){
+        i.classList.add('fa-check-circle')
+      } else {
+        i.classList.remove('fa-check-circle')
+      }
+
+    this.save()
+  }
+
   prependChild(parent, child) {
     parent.insertBefore(child, parent.firstChild)
   }
@@ -103,6 +138,9 @@ class Megaroster {
 
   setupActions(li, student) {
     li
+      .querySelector('button.edit')
+      .addEventListener('click', this.edit.bind(this, student))
+    li
       .querySelector('button.remove')
       .addEventListener('click', this.removeStudent.bind(this))
 
@@ -116,7 +154,6 @@ class Megaroster {
     li
       .querySelector('button.move-down')
       .addEventListener('click', this.moveDown.bind(this, student))
-
   }
 
   moveUp(student, ev) {
