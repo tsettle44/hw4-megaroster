@@ -114,7 +114,24 @@ class Megaroster {
         i.classList.remove('fa-check-circle')
       }
 
+    this.change(ev)
     this.save()
+  }
+
+  change(ev) {
+    const btn = ev.target
+    const i = btn.firstElementChild
+    const li = btn.closest('.student')
+    const span = li.firstElementChild
+    const txt = span.innerText
+
+    for (let i = 0; i < this.students.length; i++) {
+      if(this.students[i].name !== span.innerText && this.students[i].id == li.dataset.id) {
+        this.students[i].name = span.innerText
+        break
+      }
+      
+    }
   }
 
   prependChild(parent, child) {
