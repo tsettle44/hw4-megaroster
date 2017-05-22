@@ -83,7 +83,7 @@ class Megaroster {
   }
 
   edit(student, ev) {
-    const btn = ev.target
+    const btn = ev.currentTarget
     const i = btn.firstElementChild
     const li = btn.closest('.student')
     const span = li.firstElementChild
